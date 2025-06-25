@@ -11,12 +11,12 @@ export class Triangle implements Figure {
   shape: Shape = 'triangle';
 
   constructor(
-    public color,
+    public color: Color,
     public a: number,
     public b: number,
     public c: number,
   ) {
-    if (a <= 0 || b <= 0 || c <= 0 || a + b <= c) {
+    if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
       throw new Error('Enter valid data');
     }
   }
@@ -27,7 +27,7 @@ export class Triangle implements Figure {
       p * (p - this.a) * (p - this.b) * (p - this.c);
     const square: number = Math.sqrt(multiplication);
 
-    return Math.floor(square * 100) / 100;
+    return Math.round(square * 100) / 100;
   }
 }
 
@@ -35,7 +35,7 @@ export class Circle implements Figure {
   shape: Shape = 'circle';
 
   constructor(
-    public color,
+    public color: Color,
     public r: number,
   ) {
     if (r <= 0) {
@@ -46,7 +46,7 @@ export class Circle implements Figure {
   getArea(): number {
     const square: number = Math.PI * this.r * this.r;
 
-    return Math.floor(square * 100) / 100;
+    return Math.round(square * 100) / 100;
   }
 }
 
@@ -54,7 +54,7 @@ export class Rectangle implements Figure {
   shape: Shape = 'rectangle';
 
   constructor(
-    public color,
+    public color: Color,
     public a: number,
     public b: number,
   ) {
@@ -66,7 +66,7 @@ export class Rectangle implements Figure {
   getArea(): number {
     const square: number = this.a * this.b;
 
-    return Math.floor(square * 100) / 100;
+    return Math.round(square * 100) / 100;
   }
 }
 
